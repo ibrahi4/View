@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+
+@reference "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design tokens ───────────────────────────────── */
+:root {
+  --bg-primary:    #faf8f4;
+  --bg-secondary:  #f3ede2;
+  --bg-card:       #ffffff;
+  --text-primary:  #1a1915;
+  --text-secondary:#4d4640;
+  --text-muted:    #8a7e72;
+  --border:        #e8dcc8;
+  --accent:        #c96a20;
+  --accent-hover:  #a8521a;
+  --nav-bg:        rgba(250, 248, 244, 0.92);
+}
+
+.dark {
+  --bg-primary:    #0f0e0b;
+  --bg-secondary:  #171613;
+  --bg-card:       #1e1d19;
+  --text-primary:  #f0ece4;
+  --text-secondary:#c4b8a8;
+  --text-muted:    #6e6a60;
+  --border:        #2e2c27;
+  --accent:        #e4863a;
+  --accent-hover:  #c96a20;
+  --nav-bg:        rgba(15, 14, 11, 0.92);
+}
+
+/* ── Base ────────────────────────────────────────── */
+@layer base {
+  html {
+    font-family: "Tajawal", "Noto Naskh Arabic", sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Noto Naskh Arabic", "Tajawal", serif;
+    font-weight: 600;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+}
+
+/* ── Component helpers ───────────────────────────── */
+@layer components {
+
+  .surface-primary   { background-color: var(--bg-primary); }
+  .surface-secondary { background-color: var(--bg-secondary); }
+  .surface-card      { background-color: var(--bg-card); }
+
+  .text-token-primary   { color: var(--text-primary); }
+  .text-token-secondary { color: var(--text-secondary); }
+  .text-token-muted     { color: var(--text-muted); }
+  .text-token-accent    { color: var(--accent); }
+
+  .border-token { border-color: var(--border); }
+
+  /* Buttons */
+  .btn-accent {
+    @apply inline-flex items-center gap-2 px-6 py-3 text-sm font-medium tracking-wide transition-all duration-300;
+    background-color: var(--accent);
+    color: #fff;
+  }
+  .btn-accent:hover { background-color: var(--accent-hover); }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 text-sm font-medium tracking-wide border transition-all duration-300;
+    border-color: var(--border);
+    color: var(--text-primary);
+  }
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .accent-line {
+    @apply block w-10 h-0.5;
+    background-color: var(--accent);
+  }
+
+  .section-eyebrow {
+    @apply text-xs tracking-[0.3em] uppercase font-medium;
+    color: var(--accent);
+  }
+
+  .section-heading {
+    @apply text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight;
+    font-family: "Noto Naskh Arabic", serif;
+    color: var(--text-primary);
+  }
+}
+
+/* ── Utilities ───────────────────────────────────── */
+@layer utilities {
+  .nav-backdrop {
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .pattern-bg {
+    background-image: url("data:image/svg+xml,%3Csvg width='56' height='56' viewBox='0 0 56 56' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M28 0l4 4-4 4-4-4 4-4zm12 12l4 4-4 4-4-4 4-4zM16 12l4 4-4 4-4-4 4-4zM28 24l4 4-4 4-4-4 4-4zm12 12l4 4-4 4-4-4 4-4zM16 36l4 4-4 4-4-4 4-4zM28 48l4 4-4 4-4-4 4-4z' fill='%23c96a20' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E");
+  }
+
+  .gradient-copper {
+    background: linear-gradient(135deg, #e4863a 0%, #c96a20 60%, #843d16 100%);
+  }
+}
